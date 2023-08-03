@@ -1,4 +1,4 @@
-import CreateParty from './components/CreateParty';
+import CreateEvent from './components/CreateEvent';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from './components/Home';
 import Calendar from './components/Calendar';
@@ -11,7 +11,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route path='/CreateParty' element={<CreateParty />} />
+          <Route path='/CreateEvent' element={<CreateEvent />} />
           <Route path='/Calendar' element={<Calendar />} />
           <Route path='/SignIn' element={<SignIn />} />
 

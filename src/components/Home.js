@@ -7,12 +7,12 @@ function home() {
         <div>
             <h3>Tech Cubmunity</h3>
             <div>
-                <Button href='/CreateParty'> Create a New Party </Button>
+                <Button href='/CreateEvent'> Create a New Party </Button>
                 <Button href='/Calendar'> Calendar </Button>
                 <Button href='/SignIn'> Sign In </Button>
             </div>
-            <div>
-                List of Parties here / displayed in card format
+            <div class="EventCards">
+                List of Events here / displayed in card format
             </div>
         </div>
     );
