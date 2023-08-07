@@ -1,80 +1,63 @@
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
-import { Button, Flex, IconButton, Box } from '@chakra-ui/react';
-import { Heading, Text, Avatar, Image } from '@chakra-ui/react';
+import {  Input, Select, InputGroup, InputLeftElement, Button } from '@chakra-ui/react';
+import { PhoneIcon, EmailIcon } from '@chakra-ui/icons'
+import { Card } from '@chakra-ui/react';
+
+import CardFormat from './CardFormat';
 
 
-function CreateCard(props) {
+function CreateCard() {
     console.log('create card');
-    return (
-        <Card maxW='md'>
-            <CardHeader>
-                <Flex spacing='4'>
-                <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                    <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' />
-                    <Box>
-                    <Heading size='sm'>Segun Adebayo</Heading>
-                    <Text>Creator, Chakra UI</Text>
-                    </Box>
-                </Flex>
-                <IconButton
-                    variant='ghost'
-                    colorScheme='gray'
-                    aria-label='See menu'
-                />
-                </Flex>
-            </CardHeader>
-            <CardBody>
-                <Text>
-                With Chakra UI, I wanted to sync the speed of development with the speed
-                of design. I wanted the developer to be just as excited as the designer to
-                create a screen.
-                </Text>
-            </CardBody>
-            <Image
-                objectFit='cover'
-                src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                alt='Chakra UI'
-            />
-
-            <CardFooter
-                justify='space-between'
-                flexWrap='wrap'
-                sx={{
-                '& > button': {
-                    minW: '136px',
-                },
-                }}
-            >
-                <Button flex='1' variant='ghost' >
-                Like
-                </Button>
-                <Button flex='1' variant='ghost' >
-                Comment
-                </Button>
-                <Button flex='1' variant='ghost' >
-                Share
-                </Button>
-            </CardFooter>
-        </Card>
-    );
+    var EventCards = document.getElementById('EventCards');
+    EventCards.appendChild(<CardFormat/>);
 }
+
+
 
 function CreateEvent() {
     return (
         <div>
-            Party Name:
-            <input type="text"></input>
+            Thumbnail:
+            <Input type="img"></Input>
+            Event Title:
             <br></br>
-            Location:
-            <input type="text"></input>
+            <Input type="text" placeholder='Tech Talk'></Input>
             <br></br>
-            Time:
-            <input type="text"></input>
+            Event Location:
+            <Input type="text" placeholder='Soda 430'></Input>
             <br></br>
+            Event Type:
+            <Select placeholder='Select option'>
+                <option value='Networking'>Networking</option>
+                <option value='option2'>Option 2</option>
+                <option value='option3'>Option 3</option>
+            </Select>
+            <br></br>
+            Date and Time:
+            <Input
+                placeholder="Select Date and Time"
+                size="md"
+                type="datetime-local"
+                />
+            <br></br>
+            Description:
+            <Input type="text" placeholder='Come join'></Input>
+            <br></br>
+            Contact:
+            <InputGroup>
+                <InputLeftElement pointerEvents='none'>
+                <PhoneIcon color='gray.300' />
+                </InputLeftElement>
+                <Input type='tel' placeholder='(123) 456-789' />
+            </InputGroup>
+            <InputGroup>
+                <InputLeftElement pointerEvents='none'>
+                <EmailIcon color='gray.300' />
+                </InputLeftElement>
+                <Input type='tel' placeholder='oski@berkeley.edu' />
+            </InputGroup>
 
-            <CreateCard name="some event" description="this is some event"/>
 
-            <Button onClick>Create New Event</Button>
+            <Button id="CreateNewButton" onClick={CreateCard}>Create New Event</Button>
 
             
         </div>

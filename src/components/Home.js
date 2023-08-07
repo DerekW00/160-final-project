@@ -11,9 +11,10 @@ function home() {
                 <Button href='/Calendar'> Calendar </Button>
                 <Button href='/SignIn'> Sign In </Button>
             </div>
-            <div class="EventCards">
+            {/* <div id="EventCards">
                 List of Events here / displayed in card format
-            </div>
+                <div>dummy div for inserting cards</div> 
+            </div> */}
         </div>
     );
 }
