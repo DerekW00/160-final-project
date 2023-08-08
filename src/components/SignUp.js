@@ -1,11 +1,30 @@
 import { useState } from 'react';
-import { auth } from '../services/firebase';
+import { auth, database } from '../services/firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { Button, Center, Input } from '@chakra-ui/react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { Link as ChakraLink } from '@chakra-ui/react';
+import { ref, push, onValue, child, get } from 'firebase/database';
+
+
 
 function SignUp() {
+  const eid = 11;
+  const dbRef = ref(database);
+  // console.log(eventRef);
+
+  get(child(dbRef, `events/eid/${eid}`)).then((snapshot) => {
+    console.log(child(dbRef, `events/eid${eid}`));
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,6 +53,7 @@ function SignUp() {
             displayName: name
           }).then(() => {
             console.log(res.user.displayName);
+            console.log(res.user.uid);
           }).catch((error) => setError(error.message));
         })
         .catch((err) => setError(err.message));

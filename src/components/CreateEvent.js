@@ -1,32 +1,70 @@
 import {  Input, Select, InputGroup, InputLeftElement, Button } from '@chakra-ui/react';
 import { PhoneIcon, EmailIcon } from '@chakra-ui/icons'
-import { Card } from '@chakra-ui/react';
+import { useState } from 'react';
+import { ref, child, push, update } from "firebase/database";
+import { database } from '../services/firebase';
+import { getAuth } from "firebase/auth";
 
-import CardFormat from './CardFormat';
-
-
-function CreateCard() {
-    console.log('create card');
-    var EventCards = document.getElementById('EventCards');
-    EventCards.appendChild(<CardFormat/>);
-}
-
-
+const auth = getAuth();
+const user = auth.currentUser;
 
 function CreateEvent() {
+    // if (!user) {
+    //     return <div>You need to sign in first.</div>
+    // }
+    const [title, setTitle] = useState('');
+    const [location, setLocation] = useState('');
+    const [type, setType] = useState('');
+    const [description, setDescription] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+
+    const create = (e) => {
+        e.preventDefault();
+
+        // A post entry.
+        const eventData = {
+            Title: title,
+            Location: location,
+            Type: type,
+            Description: description,
+            Phone: phone,
+            Email: email
+        };
+        
+        // Get a key for a new Event.
+        const newEventKey = push(child(ref(database), 'events')).key;
+        
+        // Write the new post's data simultaneously in the event list and the user's event list.
+        const updates = {};
+        updates['/events/' + newEventKey] = eventData;
+        updates['/user-events/' + user.uid + '/' + newEventKey] = eventData;
+        
+        return update(ref(database), updates);
+    }
+    
+
     return (
         <div>
             Thumbnail:
-            <Input type="img"></Input>
+            <Input 
+            type="img"
+            ></Input>
             Event Title:
             <br></br>
-            <Input type="text" placeholder='Tech Talk'></Input>
+            <Input 
+            type="text" 
+            placeholder='Tech Talk'
+            onChange={(e) => setTitle(e.target.value)}></Input>
             <br></br>
             Event Location:
-            <Input type="text" placeholder='Soda 430'></Input>
+            <Input 
+            type="text" 
+            placeholder='Soda 430'
+            onChange={(e) => setLocation(e.target.value)}></Input>
             <br></br>
             Event Type:
-            <Select placeholder='Select option'>
+            <Select placeholder='Select option' onChange={(e) => setType(e.target.value)} >
                 <option value='Networking'>Networking</option>
                 <option value='option2'>Option 2</option>
                 <option value='option3'>Option 3</option>
@@ -34,30 +72,33 @@ function CreateEvent() {
             <br></br>
             Date and Time:
             <Input
-                placeholder="Select Date and Time"
+                placeholder='10/25/2023, 04:13'
                 size="md"
                 type="datetime-local"
                 />
             <br></br>
             Description:
-            <Input type="text" placeholder='Come join'></Input>
+            <Input 
+            type="text" 
+            placeholder='Come join'
+            onChange={(e) => setDescription(e.target.value)}></Input>
             <br></br>
             Contact:
             <InputGroup>
                 <InputLeftElement pointerEvents='none'>
                 <PhoneIcon color='gray.300' />
                 </InputLeftElement>
-                <Input type='tel' placeholder='(123) 456-789' />
+                <Input type='tel' placeholder='(123) 456-789' onChange={(e) => setPhone(e.target.value)} />
             </InputGroup>
             <InputGroup>
                 <InputLeftElement pointerEvents='none'>
                 <EmailIcon color='gray.300' />
                 </InputLeftElement>
-                <Input type='tel' placeholder='oski@berkeley.edu' />
+                <Input type='tel' placeholder='oski@berkeley.edu' onChange={(e) => setEmail(e.target.value)}/>
             </InputGroup>
 
 
-            <Button id="CreateNewButton" onClick={CreateCard}>Create New Event</Button>
+            <Button id="CreateNewButton" onClick={create}>Create New Event</Button>
 
             
         </div>
