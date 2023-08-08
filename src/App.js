@@ -7,13 +7,14 @@ import Calendar from './components/Calendar';
 import SignIn from './components/SignIn';
 import Landing from './components/Landing';
 import SignUp from './components/SignUp';
+import Profile from './components/Profile';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  // const [currentUser, setCurrentUser] = useState(null);
   return (
     <div>
       <Router>
-        <AuthProvider value={{currentUser}}>
+        {/* <AuthProvider value={{currentUser}}> */}
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route path='/CreateEvent' element={<CreateEvent />} />
@@ -21,8 +22,9 @@ function App() {
             <Route path='/SignIn' element={<SignIn />} />
             <Route path='/Landing' element={<Landing />} />
             <Route path='/SignUp' element={<SignUp />} />
+            <Route path='/Profile' element={<Profile />} />
           </Routes>
-        </AuthProvider>
+        {/* </AuthProvider> */}
       </Router>
     </div>
   );

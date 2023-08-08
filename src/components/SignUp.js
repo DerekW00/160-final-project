@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { auth } from '../services/firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { Button, Center, Input } from '@chakra-ui/react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { Link as ChakraLink } from '@chakra-ui/react';
 
 function SignUp() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -29,6 +30,11 @@ function SignUp() {
       createUserWithEmailAndPassword(auth, email, password)
         .then((res) => {
           console.log(res.user);
+          updateProfile(res.user, {
+            displayName: name
+          }).then(() => {
+            console.log(res.user.displayName);
+          }).catch((error) => setError(error.message));
         })
         .catch((err) => setError(err.message));
     }
@@ -37,10 +43,12 @@ function SignUp() {
   return (
     <div>
       <Center>Create an account</Center>
-      First Name
-      <Input type="text" placeholder="Oski" />
-      Last Name
-      <Input type="text" placeholder="Bear" />
+      Name
+      <Input
+        type="text" 
+        placeholder="Oski"
+        value={name}
+        onChange={(e) => setName(e.target.value)} />
       Email Address
       <Input
         type="email"
