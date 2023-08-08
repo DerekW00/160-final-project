@@ -1,11 +1,8 @@
-import { getAuth } from "firebase/auth";
+import { auth } from "../services/firebase";
 
-const auth = getAuth();
-const user = auth.currentUser;
 
 function Profile() {
-    const auth = getAuth();
-    const user = auth.currentUser;
+    const user = auth.currentUser; 
     if (!user) {
         // The user object has basic properties such as display name, email, etc.
         return <div> You are not logged in. </div>

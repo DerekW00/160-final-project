@@ -2,11 +2,11 @@ import {  Input, Select, InputGroup, InputLeftElement, Button } from '@chakra-ui
 import { PhoneIcon, EmailIcon } from '@chakra-ui/icons'
 import { useState } from 'react';
 import { ref, child, push, update } from "firebase/database";
-import { database } from '../services/firebase';
-import { getAuth } from "firebase/auth";
+import { database, auth } from '../services/firebase';
 
-const auth = getAuth();
 const user = auth.currentUser;
+console.log(user);
+
 
 function CreateEvent() {
     // if (!user) {

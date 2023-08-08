@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { Button, Center, Input } from '@chakra-ui/react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { Link as ChakraLink } from '@chakra-ui/react';
-import { ref, push, onValue, child, get } from 'firebase/database';
+import { ref, child, get } from 'firebase/database';
 
 
 
