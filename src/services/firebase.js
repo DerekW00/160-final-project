@@ -1,5 +1,5 @@
-import firebase from "firebase/app";
-import 'firebase/auth';
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBQuajsrx45sb5okKF0UHDF7wSE6wwD4BM",
@@ -12,16 +12,11 @@ const firebaseConfig = {
   measurementId: "G-0S04MEYWK3"
 };
 
-// Initialize Firebase 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(app);
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
+export {auth};
 
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
-
-export default firebase;
-
-// source: https://dev.to/mdamirgauhar/firebase-google-authentication-with-react-gop
+// source: https://css-tricks.com/user-registration-authentication-firebase-react/
