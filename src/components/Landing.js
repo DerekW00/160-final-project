@@ -8,15 +8,13 @@ function Landing() {
             <Center>
                 <img src="logo.png" width="300" alt="logo" />
             </Center>
-            <div style={ {height: '200px'} }></div>
+            <div style={ {height: '150px'} }></div>
             <Center>
-                <Stack direction='row' spacing={4} centerContent>
-                    <button colorScheme='gray' variant='solid' href='/SignIn'>
-                        Sign In
-                    </button>
-                    <button colorScheme='white' variant='outline' href='/SignUp'>
-                        Sign Up
-                    </button>
+                <Stack direction='column' spacing={1} centerContent>
+                    <a href='/SignUp'>
+                        <img src='signup.png' alt='Sign up'/>
+                    </a>
+                    <img src='login.png' alt='login'/>
                 </Stack>
             </Center>
         </div>
