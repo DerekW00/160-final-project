@@ -54,10 +54,10 @@ function Home() {
   }, []);
 
   return (
-    <div>
+
+      <Box>
       <h3>Campuswave</h3>
-      
-      <div>
+      <Box maxH="80vh" overflowY="scroll">
         {data.map((item) => (
           <Card maxW='md' key={item.Title}>
             <CardHeader>
@@ -94,16 +94,18 @@ function Home() {
             </CardFooter>
           </Card>
         ))}
-      </div>
-      <div>
+        </Box>
+        <Flex justify="space-between" align="center" padding="10px">
         <button href='/CreateEvent'><img src='add.png' alt='create new event'/></button>
         <button ><img src='chat.png' alt='chat'/></button>
         <button href='/'><img src='home.png' alt='home'/></button>
         <button href='/Profile'><img src='person.png' alt='person'/></button>
         <button><img src='search.png' alt='search'/></button>
-      </div>
+       
+       </Flex>
+        </Box>
 
-    </div>
+
   );
 }
 
