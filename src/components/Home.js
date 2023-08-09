@@ -87,8 +87,10 @@ function Home() {
       </div>
       <div>
         <button href='/CreateEvent'><img src='add.png' alt='create new event'/></button>
-        <button href='/Calendar'> Calendar </button>
-        <button href='/SignIn'> Sign In </button>
+        <button ><img src='chat.png' alt='chat'/></button>
+        <button href='/'><img src='home.png' alt='home'/></button>
+        <button href='/Profile'><img src='person.png' alt='person'/></button>
+        <button><img src='search.png' alt='search'/></button>
       </div>
 
     </div>
