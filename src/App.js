@@ -7,6 +7,7 @@ import Landing from './components/Landing';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 import Account from './components/Account';
+import MyEvents from './components/MyEvent';
 //import Calendar2 from './components/Calendar/Calendar';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path='/SignUp' element={<SignUp />} />
             <Route path='/Profile' element={<Profile />} />
             <Route path='/Account' element={<Account />} />
+            <Route path='/MyEvents' element={<MyEvents />} />
           </Routes>
       </Router>
     </div>

@@ -30,12 +30,25 @@ function Account() {
                 <h3>Account</h3>
             </div>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <img src="profile.png" style={{ width: "150px", height: "150px", borderRadius: "50%" }}/>
+                <img src="profile.png" alt="profile pic" style={{ width: "150px", height: "150px", borderRadius: "50%" }}/>
             </div>
-            <div>Profile</div>
-            <div>My Events</div>
-            <div>My Calendar</div>
-        
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "50px" }}>
+                <h4>Hugh</h4>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "30px" }}>
+                <p>Mungus</p>
+            </div>
+            <div>
+                <a href="/Profile">
+                    <img src='account-profile.png' alt='profile' style={{ width: "50%"}}/>
+                </a>
+                <a href='/MyEvents'>
+                    <img src='account-myEvents.png' alt='my events' style={{ width: "50%"}}/>
+                </a>
+                <a href='/Calendar'>
+                    <img src='account-calendar.png' alt='calendar' style={{ width: "50%"}}/>
+                </a>
+            </div>
         </div>
   );
 }
