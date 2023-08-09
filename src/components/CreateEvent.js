@@ -1,17 +1,11 @@
-import {  Input, Select, InputGroup, InputLeftElement, Button } from '@chakra-ui/react';
-import { PhoneIcon, EmailIcon } from '@chakra-ui/icons'
-import { useState } from 'react';
+import { Input, Select, InputGroup, InputLeftElement, Button } from '@chakra-ui/react';
+import { PhoneIcon, EmailIcon } from '@chakra-ui/icons';
+import { useState, useEffect } from 'react';
 import { ref, child, push, update } from "firebase/database";
 import { database, auth } from '../services/firebase';
 
-const user = auth.currentUser;
-console.log(user);
-
-
 function CreateEvent() {
-    // if (!user) {
-    //     return <div>You need to sign in first.</div>
-    // }
+    const [user, setUser] = useState(null);
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
     const [type, setType] = useState('');
@@ -19,8 +13,21 @@ function CreateEvent() {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
 
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setUser(user);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
     const create = (e) => {
         e.preventDefault();
+
+        if (!user) {
+            console.log("You need to sign in first.");
+            return;
+        }
 
         // A post entry.
         const eventData = {
@@ -40,9 +47,8 @@ function CreateEvent() {
         updates['/events/' + newEventKey] = eventData;
         updates['/user-events/' + user.uid + '/' + newEventKey] = eventData;
         
-        return update(ref(database), updates);
+        update(ref(database), updates);
     }
-    
 
     return (
         <div>
@@ -68,7 +74,6 @@ function CreateEvent() {
                 <option value='Alumni'>Alumni</option>
                 <option value='Company'>Company Visit</option>
                 <option value='other'>Other</option>
-
             </Select>
             <br></br>
             Date and Time:
@@ -95,13 +100,10 @@ function CreateEvent() {
                 <InputLeftElement pointerEvents='none'>
                 <EmailIcon color='gray.300' />
                 </InputLeftElement>
-                <Input type='tel' placeholder='oski@berkeley.edu' onChange={(e) => setEmail(e.target.value)}/>
+                <Input type='email' placeholder='oski@berkeley.edu' onChange={(e) => setEmail(e.target.value)}/>
             </InputGroup>
 
-
             <Button id="CreateNewButton" onClick={create}>Create New Event</Button>
-
-            
         </div>
     );
 }
