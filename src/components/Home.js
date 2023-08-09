@@ -46,11 +46,7 @@ function Home() {
   return (
     <div>
       <h3>Campuswave</h3>
-      <div>
-        <Button href='/CreateEvent'> Create a New Event </Button>
-        <Button href='/Calendar'> Calendar </Button>
-        <Button href='/SignIn'> Sign In </Button>
-      </div>
+      
       <div>
         {data.map((item) => (
           <Card maxW='md' key={item.Title}>
@@ -89,10 +85,11 @@ function Home() {
           </Card>
         ))}
       </div>
-      <AddIcon />
-      <ChatIcon />
-      <HamburgerIcon />
-      <Search2Icon />
+      <div>
+        <button href='/CreateEvent'><img src='add.png' alt='create new event'/></button>
+        <button href='/Calendar'> Calendar </button>
+        <button href='/SignIn'> Sign In </button>
+      </div>
 
     </div>
   );

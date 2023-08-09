@@ -1,5 +1,4 @@
 import { Button, Stack, Center } from '@chakra-ui/react'
-import { Container } from 'react-bootstrap';
 
 
 function Landing() {
@@ -12,12 +11,12 @@ function Landing() {
             <div style={ {height: '200px'} }></div>
             <Center>
                 <Stack direction='row' spacing={4} centerContent>
-                    <Button colorScheme='gray' variant='solid'>
+                    <button colorScheme='gray' variant='solid' href='/SignIn'>
                         Sign In
-                    </Button>
-                    <Button colorScheme='white' variant='outline'>
+                    </button>
+                    <button colorScheme='white' variant='outline' href='/SignUp'>
                         Sign Up
-                    </Button>
+                    </button>
                 </Stack>
             </Center>
         </div>

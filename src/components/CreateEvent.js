@@ -65,8 +65,10 @@ function CreateEvent() {
             Event Type:
             <Select placeholder='Select option' onChange={(e) => setType(e.target.value)} >
                 <option value='Networking'>Networking</option>
-                <option value='option2'>Option 2</option>
-                <option value='option3'>Option 3</option>
+                <option value='Alumni'>Alumni</option>
+                <option value='Company'>Company Visit</option>
+                <option value='other'>Other</option>
+
             </Select>
             <br></br>
             Date and Time:

@@ -6,7 +6,7 @@ function Profile() {
     if (!user) {
         // The user object has basic properties such as display name, email, etc.
         return <div> You are not logged in. </div>
-    }
+    } 
 
     const displayName = user.displayName;
     const email = user.email;
