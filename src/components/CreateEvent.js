@@ -47,9 +47,8 @@ function CreateEvent() {
     return (
         <div>
             Thumbnail:
-            <Input 
-            type="img"
-            ></Input>
+            <input type="file" name="filename" accept="image/gif, image/jpeg, image/png" />
+            <br></br>
             Event Title:
             <br></br>
             <Input 

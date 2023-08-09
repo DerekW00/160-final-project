@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { database } from '../services/firebase';
 import { ref, get, child } from 'firebase/database';
+import { AddIcon, ChatIcon, Search2Icon, HamburgerIcon } from '@chakra-ui/icons';
 
 function Home() {
   const [data, setData] = useState([]);
@@ -58,15 +59,12 @@ function Home() {
                 <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
                   {/* <Avatar name={item.Title} src={item.image} /> */}
                   <Box>
+                    <Text>{item.Type}</Text>
                     <Heading size='sm'>{item.Title}</Heading>
-                    <Text>{item.Title}</Text>
+                    <Text>📍{item.Location}</Text>
+                    <Text>📅 time </Text>
                   </Box>
                 </Flex>
-                <IconButton
-                  variant='ghost'
-                  colorScheme='gray'
-                  aria-label='See menu'
-                />
               </Flex>
             </CardHeader>
             <CardBody>
@@ -86,19 +84,16 @@ function Home() {
                 },
               }}
             >
-              <Button flex='1' variant='ghost'>
-                Like
-              </Button>
-              <Button flex='1' variant='ghost'>
-                Comment
-              </Button>
-              <Button flex='1' variant='ghost'>
-                Share
-              </Button>
+              
             </CardFooter>
           </Card>
         ))}
       </div>
+      <AddIcon />
+      <ChatIcon />
+      <HamburgerIcon />
+      <Search2Icon />
+
     </div>
   );
 }
