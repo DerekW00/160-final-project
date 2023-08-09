@@ -17,6 +17,16 @@ import { database } from '../services/firebase';
 import { ref, get, child } from 'firebase/database';
 import { AddIcon, ChatIcon, Search2Icon, HamburgerIcon } from '@chakra-ui/icons';
 
+function formatDateAndTime(dateTimeString) {
+  const options = { month: 'long', day: 'numeric' };
+  const formattedDate = new Date(dateTimeString).toLocaleDateString('en-US', options);
+
+  const timeOptions = { hour: 'numeric', minute: 'numeric' };
+  const formattedTime = new Date(dateTimeString).toLocaleTimeString('en-US', timeOptions);
+
+  return `${formattedDate} @ ${formattedTime}`;
+}
+
 function Home() {
   const [data, setData] = useState([]);
 
@@ -57,8 +67,13 @@ function Home() {
                   <Box>
                     <Text>{item.Type}</Text>
                     <Heading size='sm'>{item.Title}</Heading>
+<<<<<<< Updated upstream
                     <Text>📍{item.Location}</Text>
                     <Text>📅 {item.Time} </Text>
+=======
+                    <Text>📍 {item.Location}</Text>
+                    <Text>📅 {formatDateAndTime(item.Time)} </Text>
+>>>>>>> Stashed changes
                   </Box>
                 </Flex>
               </Flex>

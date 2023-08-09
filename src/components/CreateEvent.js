@@ -12,6 +12,7 @@ function CreateEvent() {
     const [description, setDescription] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
+    const [dateTime, setDateTime] = useState('');
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -36,7 +37,8 @@ function CreateEvent() {
             Type: type,
             Description: description,
             Phone: phone,
-            Email: email
+            Email: email,
+            Time: dateTime 
         };
         
         // Get a key for a new Event.
@@ -77,11 +79,12 @@ function CreateEvent() {
             </Select>
             <br></br>
             Date and Time:
-            <Input
-                placeholder='10/25/2023, 04:13'
-                size="md"
+            <br></br>
+            <input
                 type="datetime-local"
-                />
+                value={dateTime}
+                onChange={(e) => setDateTime(e.target.value)} /> 
+            <br></br>
             <br></br>
             Description:
             <Input 
