@@ -58,7 +58,7 @@ function Home() {
                     <Text>{item.Type}</Text>
                     <Heading size='sm'>{item.Title}</Heading>
                     <Text>📍{item.Location}</Text>
-                    <Text>📅 time </Text>
+                    <Text>📅 {item.Time} </Text>
                   </Box>
                 </Flex>
               </Flex>

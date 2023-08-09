@@ -12,11 +12,11 @@ function App() {
     <div>
       <Router>
           <Routes>
-            <Route exact path='/' element={<Home />} />
+            <Route exact path='/' element={<Landing />} />
             <Route path='/CreateEvent' element={<CreateEvent />} />
             <Route path='/Calendar' element={<Calendar />} />
             <Route path='/SignIn' element={<SignIn />} />
-            <Route path='/Landing' element={<Landing />} />
+            <Route path='/Home' element={<Home />} />
             <Route path='/SignUp' element={<SignUp />} />
             <Route path='/Profile' element={<Profile />} />
           </Routes>
