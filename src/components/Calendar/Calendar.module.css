@@ -1,0 +1,636 @@
+.root {
+  position: relative;
+  width: 430px;
+  height: 932px;
+  align-items: flex-start;
+  background-color: #fff;
+  overflow: hidden;
+}
+.frame5 {
+  position: absolute;
+  left: 0;
+  top: 102px;
+  width: 430px;
+  height: 830px;
+  align-items: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.rectangle14 {
+  position: absolute;
+  left: 22px;
+  top: 28px;
+  width: 390px;
+  height: 338px;
+  border-radius: 30px;
+  background-color: #fff;
+}
+.august {
+  color: #000;
+  font-size: 30px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 44px;
+  top: 46px;
+  width: 179px;
+  height: 24.2874px;
+  flex-direction: column;
+}
+.cardBackground {
+  position: absolute;
+  left: 44px;
+  top: 103px;
+  width: 348px;
+  height: 108px;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0px -5px 0px #b7cfb7;
+}
+.eventTitle {
+  color: #000;
+  font-size: 20px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 126px;
+  width: 214.5437px;
+  height: 37.165px;
+  flex-direction: column;
+}
+.Location {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 150px;
+  width: 214.5437px;
+  height: 18.5825px;
+  flex-direction: column;
+}
+.Time {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 161.4502px;
+  width: 214.89px;
+  height: 20.88px;
+  flex-direction: column;
+}
+.eventType {
+  color: #b7cfb7;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 116px;
+  width: 140px;
+  height: 38px;
+  flex-direction: column;
+}
+._10PeopleAreGoing {
+  color: #cecece;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 189px;
+  width: 148px;
+  height: 12px;
+  flex-direction: column;
+}
+._52884433 {
+  position: absolute;
+  left: 201px;
+  top: 114px;
+  width: 178px;
+  height: 85px;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+}
+.cardBackground2 {
+  position: absolute;
+  left: 44px;
+  top: 239px;
+  width: 348px;
+  height: 108px;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0px -5px 0px #cdb4db;
+}
+.eventTitle2 {
+  color: #000;
+  font-size: 20px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 262px;
+  width: 214.5437px;
+  height: 37.165px;
+  flex-direction: column;
+}
+.Location2 {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 286px;
+  width: 214.5437px;
+  height: 18.5825px;
+  flex-direction: column;
+}
+.Time2 {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 297.4502px;
+  width: 214.89px;
+  height: 20.88px;
+  flex-direction: column;
+}
+.eventType2 {
+  color: #cdb4db;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 252px;
+  width: 140px;
+  height: 38px;
+  flex-direction: column;
+}
+._10PeopleAreGoing2 {
+  color: #cecece;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 325px;
+  width: 148px;
+  height: 12px;
+  flex-direction: column;
+}
+.frame15 {
+  position: absolute;
+  left: 202px;
+  top: 250px;
+  width: 178px;
+  height: 85px;
+  overflow: visible;
+}
+.icon2 {
+  width: 100%;
+  height: 100%;
+}
+.rectangle142 {
+  position: absolute;
+  left: 22px;
+  top: 385px;
+  width: 390px;
+  height: 464px;
+  border-radius: 30px;
+  background-color: #fff;
+}
+.september {
+  color: #000;
+  font-size: 30px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 44px;
+  top: 403px;
+  width: 179px;
+  height: 24.2874px;
+  flex-direction: column;
+}
+.cardBackground3 {
+  position: absolute;
+  left: 44px;
+  top: 460px;
+  width: 348px;
+  height: 108px;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0px -5px 0px #cdb4db;
+}
+.eventTitle3 {
+  color: #000;
+  font-size: 20px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 483px;
+  width: 214.5437px;
+  height: 37.165px;
+  flex-direction: column;
+}
+.Location3 {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 507px;
+  width: 214.5437px;
+  height: 18.5825px;
+  flex-direction: column;
+}
+.Time3 {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 518.4502px;
+  width: 214.89px;
+  height: 20.88px;
+  flex-direction: column;
+}
+.eventType3 {
+  color: #cdb4db;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 473px;
+  width: 140px;
+  height: 38px;
+  flex-direction: column;
+}
+._10PeopleAreGoing3 {
+  color: #cecece;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 546px;
+  width: 148px;
+  height: 12px;
+  flex-direction: column;
+}
+.frame13 {
+  position: absolute;
+  left: 201px;
+  top: 472px;
+  width: 178px;
+  height: 85px;
+}
+.icon3 {
+  width: 100%;
+  height: 100%;
+}
+.cardBackground4 {
+  position: absolute;
+  left: 44px;
+  top: 588px;
+  width: 348px;
+  height: 108px;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0px -5px 0px #cdb4db;
+}
+.frame14 {
+  position: absolute;
+  left: 202px;
+  top: 600px;
+  width: 178px;
+  height: 85px;
+}
+.icon4 {
+  width: 100%;
+  height: 100%;
+}
+.eventTitle4 {
+  color: #000;
+  font-size: 20px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 611px;
+  width: 214.5437px;
+  height: 37.165px;
+  flex-direction: column;
+}
+.Location4 {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 635px;
+  width: 214.5437px;
+  height: 18.5825px;
+  flex-direction: column;
+}
+.Time4 {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 646.4502px;
+  width: 214.89px;
+  height: 20.88px;
+  flex-direction: column;
+}
+.eventType4 {
+  color: #cdb4db;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 601px;
+  width: 140px;
+  height: 38px;
+  flex-direction: column;
+}
+._10PeopleAreGoing4 {
+  color: #cecece;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 674px;
+  width: 148px;
+  height: 12px;
+  flex-direction: column;
+}
+.cardBackground5 {
+  position: absolute;
+  left: 44px;
+  top: 716px;
+  width: 348px;
+  height: 108px;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0px -5px 0px #a2d2ff;
+}
+.eventTitle5 {
+  color: #000;
+  font-size: 20px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 739px;
+  width: 214.5437px;
+  height: 37.165px;
+  flex-direction: column;
+}
+.Location5 {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 763px;
+  width: 214.5437px;
+  height: 18.5825px;
+  flex-direction: column;
+}
+.Time5 {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 774.4502px;
+  width: 214.89px;
+  height: 20.88px;
+  flex-direction: column;
+}
+.eventType5 {
+  color: #a2d2ff;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 729px;
+  width: 140px;
+  height: 38px;
+  flex-direction: column;
+}
+._10PeopleAreGoing5 {
+  color: #cecece;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 802px;
+  width: 148px;
+  height: 12px;
+  flex-direction: column;
+}
+._52884432 {
+  position: absolute;
+  left: 201px;
+  top: 727px;
+  width: 178px;
+  height: 85px;
+}
+.icon5 {
+  width: 100%;
+  height: 100%;
+}
+.rectangle143 {
+  position: absolute;
+  left: 17px;
+  top: 869px;
+  width: 395px;
+  height: 201px;
+  border-radius: 30px;
+  background-color: #fff;
+}
+.october {
+  color: #000;
+  font-size: 30px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 39px;
+  top: 887px;
+  width: 179px;
+  height: 24.2874px;
+  flex-direction: column;
+}
+.cardBackground6 {
+  position: absolute;
+  left: 44px;
+  top: 942px;
+  width: 348px;
+  height: 108px;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0px -5px 0px #b7cfb7;
+}
+.eventTitle6 {
+  color: #000;
+  font-size: 20px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 965px;
+  width: 214.5437px;
+  height: 37.165px;
+  flex-direction: column;
+}
+.Location6 {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 989px;
+  width: 214.5437px;
+  height: 18.5825px;
+  flex-direction: column;
+}
+.Time6 {
+  color: #000;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 1000.4502px;
+  width: 214.89px;
+  height: 20.88px;
+  flex-direction: column;
+}
+.eventType6 {
+  color: #b7cfb7;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 955px;
+  width: 140px;
+  height: 38px;
+  flex-direction: column;
+}
+.thumbnail {
+  position: absolute;
+  left: 295px;
+  top: 953px;
+  width: 85px;
+  height: 85px;
+  border-radius: 20px;
+}
+.frame152 {
+  position: absolute;
+  left: 201px;
+  top: 953px;
+  width: 178px;
+  height: 85px;
+  overflow: visible;
+}
+.icon6 {
+  width: 100%;
+  height: 100%;
+}
+._10PeopleAreGoing6 {
+  color: #cecece;
+  font-size: 10px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 59px;
+  top: 1028px;
+  width: 148px;
+  height: 12px;
+  flex-direction: column;
+}
+.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 430px;
+  height: 102px;
+  background-color: #fff;
+}
+.line5 {
+  position: absolute;
+  left: 23px;
+  top: 73px;
+  width: 22.0907px;
+  max-width: 100%;
+  height: 3px;
+  max-height: 100%;
+  overflow: visible;
+}
+.icon7 {
+  width: 100%;
+  height: 100%;
+}
+.myCalendar {
+  color: #000;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 59px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+  transform: translateX(-50%);
+}
+.frame132 {
+  position: absolute;
+  left: 22px;
+  top: 57px;
+  width: 31.1127px;
+  height: 31.1127px;
+  background-color: #fff;
+}
+.line6 {
+  position: absolute;
+  left: 23px;
+  top: 73px;
+  width: 22.0907px;
+  max-width: 100%;
+  height: 3px;
+  max-height: 100%;
+  overflow: visible;
+}
+.icon8 {
+  width: 100%;
+  height: 100%;
+}

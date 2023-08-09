@@ -6,6 +6,7 @@ import SignIn from './components/SignIn';
 import Landing from './components/Landing';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
+//import Calendar2 from './components/Calendar/Calendar';
 
 function App() {
   return (
