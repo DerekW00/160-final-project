@@ -67,13 +67,8 @@ function Home() {
                   <Box>
                     <Text>{item.Type}</Text>
                     <Heading size='sm'>{item.Title}</Heading>
-<<<<<<< Updated upstream
-                    <Text>📍{item.Location}</Text>
-                    <Text>📅 {item.Time} </Text>
-=======
                     <Text>📍 {item.Location}</Text>
                     <Text>📅 {formatDateAndTime(item.Time)} </Text>
->>>>>>> Stashed changes
                   </Box>
                 </Flex>
               </Flex>
