@@ -73,6 +73,19 @@ function Home() {
       });
   };
 
+  const getColorByType = (eventType) => {
+    switch (eventType) {
+      case 'Networking':
+        return 'blue';
+      case 'Alumni':
+        return 'green';
+      case 'Company Visit':
+        return 'purple';
+      default:
+        return 'gray';
+    }
+  };
+
   return (
 
       <Box>
@@ -106,7 +119,8 @@ function Home() {
               </CardHeader>
               <Text>{item.description}</Text>
               <Button
-              onClick={() => addToFavorites(item)}> Add to Favorites </Button>
+              onClick={() => addToFavorites(item)}
+              colorScheme={getColorByType(item.Type)}> Add to Favorites </Button>
             </Card>
             <div style={{ height: '20px'}}></div>
           </div>
