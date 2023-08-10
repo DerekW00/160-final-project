@@ -1,3 +1,5 @@
+import { Flex } from '@chakra-ui/react';
+
 function Calendar() {
     const calendarStyle = {
         border: 'none', // Removing the border to make it look more seamless
@@ -5,7 +7,7 @@ function Calendar() {
         borderRadius: '8px', // Adding rounded corners for a softer appearance
         overflow: 'hidden', // Ensuring nothing overflows the rounded corners
         width: '390px',
-        height: '844px',
+        height: '750px',
     };
 
     const containerStyle = {
@@ -25,6 +27,15 @@ function Calendar() {
                 frameBorder="0"
                 scrolling="no"
             />
+            <div style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
+            <Flex justify="space-between" align="center" padding="10px">
+                <a href='/CreateEvent'><img src='add.png' alt='create new event'/></a>
+                <a href='/Chat' ><img src='chat.png' alt='chat'/></a>
+                <a href='/Home'><img src='home.png' alt='home'/></a>
+                <a href='/Account'><img src='person.png' alt='person'/></a>
+                <a href='/Search'><img src='search.png' alt='search'/></a>
+            </Flex>
+      </div>
         </div>
     );
 }

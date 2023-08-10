@@ -83,6 +83,32 @@ function Home() {
       });
   };
 
+  useEffect(() => {
+    const currentTime = new Date();
+    const threshold = 10 * 60 * 1000; // 10 minutes in milliseconds
+
+    data.forEach((event) => {
+      const eventTime = new Date(event.Time);
+      const timeDifference = eventTime - currentTime;
+
+      if (timeDifference > 0 && timeDifference <= threshold) {
+        const notification = new Notification(`Reminder: ${event.Title}`, {
+          body: `Your event ${event.Title} is about to start at ${formatDateAndTime(event.Time)}!`,
+        });
+      }
+    });
+  }, [data]);
+
+  const [permission, setPermission] = useState(Notification.permission);
+
+  useEffect(() => {
+    if (permission === 'default') {
+      Notification.requestPermission().then((newPermission) => {
+        setPermission(newPermission);
+      });
+    }
+  }, [permission]);
+
   const getColorByType = (eventType) => {
     switch (eventType) {
       case 'Networking':
