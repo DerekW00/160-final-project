@@ -46,6 +46,7 @@ function MyEvents() {
   
               // Convert the object to an array
               const dataArray = Object.values(snap);
+              dataArray.sort((a, b) => new Date(a.Time) - new Date(b.Time));
   
               console.log('dataArray', dataArray);
   
