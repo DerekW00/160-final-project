@@ -62,42 +62,49 @@ function Home() {
       <div style={{ padding: "20px", display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <img style={{ width: "70%" }}src='campuswave.png' alt='campuswave'/>
       </div>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div style={{ width: '340px' }}>
       <Box maxH="83vh" overflowY="scroll">
         {data.map((item) => (
-          <Card maxW='md' variant={'outline'} key={item.Title}>
-            <CardHeader>
-              <Flex spacing='4'>
-                <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                  {/* <Avatar name={item.Title} src={item.image} /> */}
-                  <Image
-                    objectFit='cover'
-                    src='thumbnail.png'
-                    // src={item.image}
-                    alt='Chakra UI'
-                  />
-                  <Box>
-                    <Text>{item.Type}</Text>
-                    <Heading size='sm'>{item.Title}</Heading>
-                    <Text>📍 {item.Location}</Text>
-                    <Text>📅 {formatDateAndTime(item.Time)} </Text>
-                  </Box>
+          <div>
+            <Card maxW='md' variant={'outline'} key={item.Title}>
+              <CardHeader>
+                <Flex spacing='4'>
+                  <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
+                    {/* <Avatar name={item.Title} src={item.image} /> */}
+                    <Image
+                      objectFit='cover'
+                      src='thumbnail.png'
+                      // src={item.image}
+                      alt='Chakra UI'
+                    />
+                    <Box>
+                      <Text>{item.Type}</Text>
+                      <Heading size='sm'>{item.Title}</Heading>
+                      <Text>📍 {item.Location}</Text>
+                      <Text>📅 {formatDateAndTime(item.Time)} </Text>
+                    </Box>
+                  </Flex>
                 </Flex>
-              </Flex>
-            </CardHeader>
-            <Text>{item.description}</Text>
-            <Button
-            onClick={() =>
-              toast({
-                title: 'Event added.',
-                description: "You'll receive a reminder 10 minutes before the event.",
-                status: 'info',
-                duration: 9000,
-                isClosable: true,
-              })
-            }> Add event </Button>
-          </Card>
+              </CardHeader>
+              <Text>{item.description}</Text>
+              <Button
+              onClick={() =>
+                toast({
+                  title: 'Event added.',
+                  description: "You'll receive a reminder 10 minutes before the event.",
+                  status: 'info',
+                  duration: 9000,
+                  isClosable: true,
+                })
+              }> Add event </Button>
+            </Card>
+            <div style={{ height: '20px'}}></div>
+          </div>
         ))}
         </Box>
+        </div>
+        </div>
         <div style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
           <Flex justify="space-between" align="center" padding="10px">
             <a href='/CreateEvent'><img src='add.png' alt='create new event'/></a>
