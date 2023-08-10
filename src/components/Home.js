@@ -23,6 +23,7 @@ function Home() {
   const [data, setData] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [addedToFavorites, setAddedToFavorites] = useState({});
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -70,7 +71,12 @@ function Home() {
           status: 'info',
           duration: 9000,
           isClosable: true,
+          position: 'top',
         });
+        setAddedToFavorites((prevFavorites) => ({
+          ...prevFavorites,
+          [eventData.Title]: true,
+        }));
       })
       .catch((error) => {
         console.error("Error adding event to favorites:", error);
@@ -132,10 +138,7 @@ function Home() {
                   </Flex>
                 </Flex>
               </CardHeader>
-              <Text>{item.description}</Text>
-              <Button
-              onClick={() => addToFavorites(item)}
-              colorScheme={getColorByType(item.Type)}> Add to Favorites </Button>
+              
             </Card>
             <div style={{ height: '20px'}}></div>
           </div>
@@ -162,12 +165,20 @@ function Home() {
                   <Text>📍 {selectedEvent.Location}<br />
                         📅 {formatDateAndTime(selectedEvent.Time)}</Text>
                 </Box>
-                <Text>{selectedEvent.description}</Text>
+                <Text>{selectedEvent.Description}</Text>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Button
+                  onClick={() => addToFavorites(selectedEvent)}
+                  colorScheme={getColorByType(selectedEvent.Type)}
+                  disabled={addedToFavorites[selectedEvent.Title]} // Disable button if already added
+                >
+                  {addedToFavorites[selectedEvent.Title] ? 'Added to Favorites' : 'Add to Favorites'}
+              </Button>
+                </div>
               </ModalBody>
             )}
-            <ModalFooter>
-              <Button onClick={onClose}>Close</Button>
-            </ModalFooter>
+            <div style={{ height: '18px' }}></div>
+            {/* <ModalFooter></ModalFooter> */}
           </ModalContent>
         </Modal>
         </div>

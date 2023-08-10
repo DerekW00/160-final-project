@@ -5,7 +5,7 @@ import { ref, child, push, update } from "firebase/database";
 import { database, auth } from '../services/firebase';
 import { Modal, ModalOverlay, ModalContent, ModalHeader,
          ModalCloseButton, ModalBody, ModalFooter,
-         useDisclosure, Image, Box, Heading, Text } from '@chakra-ui/react';
+         useDisclosure, Image, Box, Heading, Text, Badge } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
 function formatDateAndTime(dateTimeString) {
@@ -78,6 +78,19 @@ function CreateEvent() {
         onClose();
         navigate('/Home');
     }
+
+    const getColorByType = (eventType) => {
+        switch (eventType) {
+          case 'Networking':
+            return 'blue';
+          case 'Alumni':
+            return 'green';
+          case 'Company Visit':
+            return 'purple';
+          default:
+            return 'gray';
+        }
+      };
 
     return (
         <div>
@@ -154,7 +167,7 @@ function CreateEvent() {
                         alt='Chakra UI'
                         />
                         <Box>
-                        <Text>{type}</Text>
+                        <Badge colorScheme={getColorByType(type)} >{type}</Badge>
                         <Heading size='sm'>{title}</Heading>
                         <Text>📍 {location} <br />
                               📅 {formatDateAndTime(dateTime)}</Text>
