@@ -61,10 +61,12 @@ function Home() {
       console.log("You need to sign in first.");
       return;
     }
-
+  
     // Push the event data to the user's favorites path
     push(child(ref(database), `user-favorites/${user.uid}`), eventData)
       .then(() => {
+        const addedEventTitle = eventData.Title;
+  
         toast({
           title: 'Event added to Favorites.',
           description: "You'll receive a reminder 10 minutes before the event.",
@@ -73,31 +75,44 @@ function Home() {
           isClosable: true,
           position: 'top',
         });
+  
         setAddedToFavorites((prevFavorites) => ({
           ...prevFavorites,
-          [eventData.Title]: true,
+          [addedEventTitle]: true,
         }));
+  
+        const currentTime = new Date();
+        const threshold = 60 * 60 * 1000; // 10 minutes in milliseconds
+        const eventTime = new Date(eventData.Time);
+        const timeDifference = eventTime - currentTime;
+  
+        if (timeDifference > 0 && timeDifference <= threshold) {
+          new Notification(`Reminder: ${addedEventTitle}`, {
+            body: `Your event ${addedEventTitle} is about to start at ${formatDateAndTime(eventData.Time)}!`,
+          });
+        }
       })
       .catch((error) => {
         console.error("Error adding event to favorites:", error);
       });
   };
+  
 
-  useEffect(() => {
-    const currentTime = new Date();
-    const threshold = 10 * 60 * 1000; // 10 minutes in milliseconds
+  // useEffect(() => {
+  //   const currentTime = new Date();
+  //   const threshold = 10 * 60 * 1000; // 10 minutes in milliseconds
 
-    data.forEach((event) => {
-      const eventTime = new Date(event.Time);
-      const timeDifference = eventTime - currentTime;
+  //   data.forEach((event) => {
+  //     const eventTime = new Date(event.Time);
+  //     const timeDifference = eventTime - currentTime;
 
-      if (timeDifference > 0 && timeDifference <= threshold) {
-        const notification = new Notification(`Reminder: ${event.Title}`, {
-          body: `Your event ${event.Title} is about to start at ${formatDateAndTime(event.Time)}!`,
-        });
-      }
-    });
-  }, [data]);
+  //     if (timeDifference > 0 && timeDifference <= threshold) {
+  //       const notification = new Notification(`Reminder: ${event.Title}`, {
+  //         body: `Your event ${event.Title} is about to start at ${formatDateAndTime(event.Time)}!`,
+  //       });
+  //     }
+  //   });
+  // }, [data]);
 
   const [permission, setPermission] = useState(Notification.permission);
 

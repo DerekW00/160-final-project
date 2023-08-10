@@ -82,7 +82,6 @@ function Chat() {
     const groupedEvents = groupEventsByMonth();
 
   return (
-
       <Box>
       <div style={{ padding: "20px", display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <img style={{ width: "70%" }}src='campuswave.png' alt='campuswave'/>
@@ -101,8 +100,10 @@ function Chat() {
                         <Box flex="1"> {/* Make the Box take up available space */}
                             <Badge colorScheme={getColorByType(item.Type)}> {item.Type}</Badge>
                             <div style={{ height: '10px' }}></div>
+                            <a href='/WoOchat'> 
                             <Heading size="sm">{item.Title}</Heading>
-                            <Text>
+                            </a>
+                            <Text color={'black'}>
                             📍 {item.Location}
                             <br />
                             📅 {formatDateAndTime(item.Time)}
