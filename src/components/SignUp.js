@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { auth, database } from '../services/firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { Button, Center, Input } from '@chakra-ui/react';
+import { Button, Center, Input, Wrap, WrapItem } from '@chakra-ui/react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { Link as ChakraLink } from '@chakra-ui/react';
 import { ref, child, get } from 'firebase/database';
@@ -63,6 +63,22 @@ function SignUp() {
   return (
     <div>
       <Center>Create an account</Center>
+      {/* <div style={{ width: "80%", display: "flex",  alignItems: "center", justifyContent: "center" }}> */}
+      <Wrap spacing={ '30px' }>
+        <WrapItem>
+          Name
+          <Input
+          type="text" 
+          placeholder="Oski"
+          value={name}
+          onChange={(e) => setName(e.target.value)} />
+        </WrapItem>
+      </Wrap>
+      <Input
+        type="text" 
+        placeholder="Oski"
+        value={name}
+        onChange={(e) => setName(e.target.value)} />
       Name
       <Input
         type="text" 
@@ -100,6 +116,8 @@ function SignUp() {
       <ChakraLink as={ReactRouterLink} to="/SignIn">
         Sign In
       </ChakraLink>
+      {/* </div> */}
+     
     </div>
   );
 }

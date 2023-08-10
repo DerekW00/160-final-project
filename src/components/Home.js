@@ -56,8 +56,10 @@ function Home() {
   return (
 
       <Box>
-      <h3>Campuswave</h3>
-      <Box maxH="80vh" overflowY="scroll">
+      <div style={{ paddingTop: "20px", display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <img style={{ width: "70%" }}src='campuswave.png' alt='campuswave'/>
+      </div>
+      <Box maxH="85vh" overflowY="scroll">
         {data.map((item) => (
           <Card maxW='md' key={item.Title}>
             <CardHeader>
@@ -95,17 +97,16 @@ function Home() {
           </Card>
         ))}
         </Box>
-        <Flex justify="space-between" align="center" padding="10px">
-        <button href='/CreateEvent'><img src='add.png' alt='create new event'/></button>
-        <button ><img src='chat.png' alt='chat'/></button>
-        <button href='/'><img src='home.png' alt='home'/></button>
-        <button href='/Profile'><img src='person.png' alt='person'/></button>
-        <button><img src='search.png' alt='search'/></button>
-       
-       </Flex>
-        </Box>
-
-
+        <div style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
+          <Flex justify="space-between" align="center" padding="10px">
+            <a href='/CreateEvent'><img src='add.png' alt='create new event'/></a>
+            <button ><img src='chat.png' alt='chat'/></button>
+            <a href='/'><img src='home.png' alt='home'/></a>
+            <a href='/Profile'><img src='person.png' alt='person'/></a>
+            <button><img src='search.png' alt='search'/></button>
+          </Flex>
+        </div>
+      </Box>
   );
 }
 
