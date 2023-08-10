@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { auth, database } from '../services/firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { Button, Center, Input, Wrap, WrapItem } from '@chakra-ui/react';
+import { Button, Text, Center, Heading, Input, Wrap, WrapItem } from '@chakra-ui/react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { Link as ChakraLink } from '@chakra-ui/react';
 import { ref, child, get } from 'firebase/database';
@@ -65,28 +65,16 @@ function SignUp() {
       <div class="top-bar" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70px" }}>
         <h3>Sign Up</h3>
       </div>
-      {/* <div style={{ width: "80%", display: "flex",  alignItems: "center", justifyContent: "center" }}> */}
-      <Wrap spacing={ '30px' }>
-        <WrapItem>
-          Name
-          <Input
-          type="text" 
-          placeholder="Oski"
-          value={name}
-          onChange={(e) => setName(e.target.value)} />
-        </WrapItem>
-      </Wrap>
-      <Input
-        type="text" 
-        placeholder="Oski"
-        value={name}
-        onChange={(e) => setName(e.target.value)} />
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div style={{ width: '340px' }}>
       Name
       <Input
         type="text" 
         placeholder="Oski"
         value={name}
         onChange={(e) => setName(e.target.value)} />
+      <div style={{ height: "10px"}}></div>
+
       Email Address
       <Input
         type="email"
@@ -94,6 +82,8 @@ function SignUp() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+      <div style={{ height: "10px"}}></div>
+      
       Password
       <Input
         type="password"
@@ -101,6 +91,8 @@ function SignUp() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <div style={{ height: "10px"}}></div>
+      
       Confirm Password
       <Input
         type="password"
@@ -109,17 +101,31 @@ function SignUp() {
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
       {error && <div>Error message: {error}</div>}
-      <Button onClick={register}>Sign Up</Button>
-      Or
-      <Button>Sign Up with Google</Button>
-      <Button>Sign Up with Facebook</Button>
+      
+      <div style={{ paddingTop: '150px', height: '100px', display: "flex", alignItems: 'center', justifyContent: 'center'}}>
+        <Button onClick={register}>Sign Up</Button>
+      </div>
+      <div style={{ paddingTop: '70px', height: '100px', display: "flex", alignItems: 'center', justifyContent: 'center'}}>
+        <Text>Or</Text>
+      </div>
+      <div style={{ height: '100px', display: "flex", alignItems: 'center', justifyContent: 'center'}}>
+        <Button><img src="google.png" alt='google' /></Button>
+        <div style={{ width: '10px' }}></div>
+        <Button><img src="facebook.png" alt='facebook' /></Button>
+      </div>
 
-      Already a member?{' '}
-      <ChakraLink as={ReactRouterLink} to="/SignIn">
-        Sign In
-      </ChakraLink>
-      {/* </div> */}
-     
+      
+      
+      <div style={{ height: "10px"}}></div>
+
+      <div style={{ height: '50px', display: "flex", alignItems: 'center', justifyContent: 'center'}}>
+        Already a member?{' '}
+        <ChakraLink as={ReactRouterLink} to="/SignIn">
+          <strong>Sign In</strong>
+        </ChakraLink>
+      </div>
+      </div>
+      </div>
     </div>
   );
 }
