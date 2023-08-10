@@ -170,10 +170,10 @@ function MyEvents() {
       <div style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
           <Flex justify="space-between" align="center" padding="10px">
               <a href='/CreateEvent'><img src='add.png' alt='create new event'/></a>
-              <button ><img src='chat.png' alt='chat'/></button>
+              <a href='/Chat' ><img src='chat.png' alt='chat'/></a>
               <a href='/Home'><img src='home.png' alt='home'/></a>
               <a href='/Account'><img src='person.png' alt='person'/></a>
-              <button><img src='search.png' alt='search'/></button>
+              <a href='/Search'><img src='search.png' alt='search'/></a>
           </Flex>
       </div>
       </Box>

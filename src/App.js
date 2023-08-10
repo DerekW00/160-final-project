@@ -11,6 +11,9 @@ import MyEvents from './components/MyEvent';
 import Welcome from './components/Welcome';
 import MyFavorites from './components/MyFavorites';
 import FigmaCalendar from './components/FigmaCalendar';
+import Chat from './components/Chat';
+import Search from './components/Search';
+import WoOchat from './components/WoOchat';
 //import Calendar2 from './components/Calendar/Calendar';
 
 function App() {
@@ -30,6 +33,9 @@ function App() {
             <Route path='/Welcome' element={<Welcome />} />
             <Route path='/MyFavorites' element={<MyFavorites />} />
             <Route path='/FigmaCalendar' element={<FigmaCalendar />} />
+            <Route path='/Chat' element={<Chat />} />
+            <Route path='/WoOchat' element={<WoOchat />} />
+            <Route path='/Search' element={<Search />} />
           </Routes>
       </Router>
     </div>

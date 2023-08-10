@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'; // Make sure to import useState and useEffect
 import { Card, CardHeader, Flex, Box, Heading,
-         Text, Image, Badge } from '@chakra-ui/react';
+         Text, Badge } from '@chakra-ui/react';
+import { Image } from '@chakra-ui/image';
 import { auth, database } from '../services/firebase';
 import { ref, get, child } from 'firebase/database';
 
@@ -15,7 +16,7 @@ function formatDateAndTime(dateTimeString) {
   return `${formattedDate} @ ${formattedTime}`;
 }
 
-function MyFavorites() {
+function Chat() {
     const [user, setUser] = useState(null);
     const [data, setData] = useState([]);
 
@@ -91,30 +92,29 @@ function MyFavorites() {
       <Box maxH="83vh" overflowY="scroll">
         {Object.keys(groupedEvents).map((monthYear) => (
           <div key={monthYear}>
-            <Heading as="h2" size="lg" textAlign="center">
-              {monthYear}
-            </Heading>
             {groupedEvents[monthYear].map((item) => (
               <div key={item.Title}>
                 <Card maxW="md" variant="outline">
                   <CardHeader>
                     <Flex spacing="4">
-                      <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                        <Image
-                          objectFit="cover"
-                          src="thumbnail.png"
-                          alt="Chakra UI"
-                        />
-                        <Box>
-                            <Badge colorScheme={getColorByType(item.Type)} >{item.Type}</Badge>
+                    <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+                        <Box flex="1"> {/* Make the Box take up available space */}
+                            <Badge colorScheme={getColorByType(item.Type)}> {item.Type}</Badge>
                             <div style={{ height: '10px' }}></div>
-                            <Heading size='sm'>{item.Title}</Heading>
-                            <Text>📍 {item.Location}
-                                    <br />
-                                    📅 {formatDateAndTime(item.Time)}
+                            <Heading size="sm">{item.Title}</Heading>
+                            <Text>
+                            📍 {item.Location}
+                            <br />
+                            📅 {formatDateAndTime(item.Time)}
                             </Text>
                         </Box>
-                      </Flex>
+                        <Image
+                            objectFit="cover"
+                            src="thumbnail.png"
+                            alt="Chakra UI"
+                            style={{ flexShrink: 0, width: '100px', height: '130px', borderRadius:'15px'  }} 
+                        />
+                    </Flex>
                     </Flex>
                   </CardHeader>
                 </Card>
@@ -139,4 +139,4 @@ function MyFavorites() {
   );
 }
 
-export default MyFavorites;
+export default Chat;
