@@ -166,8 +166,10 @@ function CreateEvent() {
                         // src={selectedEvent.image}
                         alt='Chakra UI'
                         />
+                        <div style={{ height: '10px' }}></div>
                         <Box>
                         <Badge colorScheme={getColorByType(type)} >{type}</Badge>
+                        <div style={{ height: '10px' }}></div>
                         <Heading size='sm'>{title}</Heading>
                         <Text>📍 {location} <br />
                               📅 {formatDateAndTime(dateTime)}</Text>

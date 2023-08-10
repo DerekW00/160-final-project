@@ -100,13 +100,14 @@ function Search() {
         <img style={{ width: '70%' }} src='campuswave.png' alt='campuswave' />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <div style={{ width: '340px' }}>
+        <div style={{ width: '360px' }}>
           <Box maxH="78vh" overflowY="scroll">
             {data.map((item) => (
               <div>
                 <Box
                   maxW='md'
-                  variant={'outline'}
+                  w='340px'
+                  variant='outline'
                   key={item.Title}
                   p="4"
                   onClick={() => {
@@ -115,7 +116,6 @@ function Search() {
                   }}
                   style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                 >
-                  
                   <div>
                     <Badge colorScheme={getColorByType(item.Type)}>{item.Type}</Badge>
                     <div style={{ height: '10px' }}></div>
@@ -126,11 +126,12 @@ function Search() {
                       📅 {formatDateAndTime(item.Time)}
                     </Text>
                   </div>
+                  <div style={{ width: '30px', borderLeft: '30px' }}></div>
                   <Image
                     objectFit="cover"
                     src="thumbnail.png"
                     alt="Chakra UI"
-                    style={{ flexShrink: 0, width: '100px', height: '130px', borderRadius:'15px'  }} 
+                    style={{ flexShrink: 0, width: '100px', height: '130px', borderRadius:'15px', right: 0  }} 
                   />
                 </Box>
                 <div style={{ height: '20px' }}></div>
