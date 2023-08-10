@@ -62,7 +62,7 @@ function SignUp() {
 
   return (
     <div>
-      <div class="top-bar" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70px" }}>
+      <div class="top-bar" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100px" }}>
         <h3>Sign Up</h3>
       </div>
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
