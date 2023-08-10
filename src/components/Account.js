@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { auth } from "../services/firebase";
+import { Flex } from '@chakra-ui/react';
 
 
 function Account() {
@@ -16,13 +17,6 @@ function Account() {
     if (!user) {
         return <div></div>;
     }
-
-    const displayName = user.displayName;
-    const email = user.email;
-    const photoURL = user.photoURL;
-    const emailVerified = user.emailVerified;
-    const uid = user.uid;
-
 
     return (
         <div>
@@ -49,6 +43,16 @@ function Account() {
                     <img src='account-calendar.png' alt='calendar' style={{ width: "50%"}}/>
                 </a>
             </div>
+
+            <div style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
+          <Flex justify="space-between" align="center" padding="10px">
+              <a href='/CreateEvent'><img src='add.png' alt='create new event'/></a>
+              <button ><img src='chat.png' alt='chat'/></button>
+              <a href='/Home'><img src='home.png' alt='home'/></a>
+              <a href='/Account'><img src='person.png' alt='person'/></a>
+              <button><img src='search.png' alt='search'/></button>
+          </Flex>
+      </div>
         </div>
   );
 }

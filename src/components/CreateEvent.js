@@ -121,8 +121,8 @@ function CreateEvent() {
                 <Flex justify="space-between" align="center" padding="10px">
                     <a href='/CreateEvent'><img src='add.png' alt='create new event'/></a>
                     <button ><img src='chat.png' alt='chat'/></button>
-                    <a href='/'><img src='home.png' alt='home'/></a>
-                    <a href='/Profile'><img src='person.png' alt='person'/></a>
+                    <a href='/Home'><img src='home.png' alt='home'/></a>
+                    <a href='/Account'><img src='person.png' alt='person'/></a>
                     <button><img src='search.png' alt='search'/></button>
                 </Flex>
             </div>

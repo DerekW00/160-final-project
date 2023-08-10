@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { auth, database } from '../services/firebase';
+import { auth } from '../services/firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { Button, Text, Center, Heading, Input, Wrap, WrapItem } from '@chakra-ui/react';
+import { Button, Text, Input } from '@chakra-ui/react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { Link as ChakraLink } from '@chakra-ui/react';
-import { ref, child, get } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
 
 
