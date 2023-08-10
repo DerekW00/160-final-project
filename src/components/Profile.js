@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 function Profile() {
   const navigate = useNavigate();
+  function toAccount() {
+    navigate('/Account');
+  }
   
   const [user, setUser] = useState(null);
 
@@ -24,9 +27,6 @@ function Profile() {
 
   const displayName = user.displayName;
   const email = user.email;
-  const photoURL = user.photoURL;
-  const emailVerified = user.emailVerified;
-  const uid = user.uid;
 
 
   return (
@@ -69,10 +69,10 @@ function Profile() {
       />
       
       <div style={{ paddingTop: '120px', height: '50px', display: "flex", alignItems: 'center', justifyContent: 'center'}}>
-        <Button onClick={navigate('/Account')}>Save Changes</Button>
+        <Button onClick={toAccount}>Save Changes</Button>
       </div>
       <div style={{ paddingTop: '50px', height: '100px', display: "flex", alignItems: 'center', justifyContent: 'center'}}>
-        <Button onClick={navigate('/Account')}>Cancel</Button>
+        <Button onClick={toAccount}>Cancel</Button>
       </div>
       
       </div>
