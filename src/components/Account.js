@@ -3,6 +3,7 @@ import { auth } from "../services/firebase";
 import { Flex } from '@chakra-ui/react';
 
 
+
 function Account() {
     const [user, setUser] = useState(null);
 
@@ -32,17 +33,34 @@ function Account() {
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "30px" }}>
                 <p>Mungus</p>
             </div>
-            <div>
-                <a href="/Profile">
-                    <img src='account-profile.png' alt='profile' style={{ width: "50%"}}/>
+            <div style={{ height: '40px'}}></div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <a href="/Profile" style={{ flex: '1 0 50%', maxWidth: '50%', textDecoration: 'none' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px' }}>
+                    <img src='icons/profile.png' alt='profile' style={{ marginBottom: '10px' }} />
+                    <h5 style={{ color: 'black' }}> Profile </h5>
+                    </div>
                 </a>
-                <a href='/MyEvents'>
-                    <img src='account-myEvents.png' alt='my events' style={{ width: "50%"}}/>
+                <a href='/MyEvents' style={{ flex: '1 0 50%', maxWidth: '50%', textDecoration: 'none' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px' }}>
+                    <img src='icons/events.png' alt='my events' style={{ marginBottom: '10px' }} />
+                    <h5 style={{ color: 'black' }}> My Events </h5>
+                    </div>
                 </a>
-                <a href='/Calendar'>
-                    <img src='account-calendar.png' alt='calendar' style={{ width: "50%"}}/>
+                <a href='/Calendar' style={{ flex: '1 0 50%', maxWidth: '50%', textDecoration: 'none' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px' }}>
+                    <img src='icons/calendar.png' alt='calendar' style={{ marginBottom: '10px' }} />
+                    <h5 style={{ color: 'black' }}> Calendar </h5>
+                    </div>
+                </a>
+                <a href='/MyFavorites' style={{ flex: '1 0 50%', maxWidth: '50%', textDecoration: 'none' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px' }}>
+                    <img src='icons/favorites.png' alt='favorites' style={{ marginBottom: '10px' }} />
+                    <h5 style={{ color: 'black' }}> Favorites </h5>
+                    </div>
                 </a>
             </div>
+
 
             <div style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
           <Flex justify="space-between" align="center" padding="10px">
