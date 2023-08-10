@@ -8,6 +8,7 @@ import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 import Account from './components/Account';
 import MyEvents from './components/MyEvent';
+import Welcome from './components/Welcome';
 //import Calendar2 from './components/Calendar/Calendar';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path='/Profile' element={<Profile />} />
             <Route path='/Account' element={<Account />} />
             <Route path='/MyEvents' element={<MyEvents />} />
+            <Route path='/Welcome' element={<Welcome />} />
           </Routes>
       </Router>
     </div>
