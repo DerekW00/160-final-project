@@ -62,7 +62,9 @@ function SignUp() {
 
   return (
     <div>
-      <Center>Create an account</Center>
+      <div class="top-bar" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70px" }}>
+        <h3>Sign Up</h3>
+      </div>
       {/* <div style={{ width: "80%", display: "flex",  alignItems: "center", justifyContent: "center" }}> */}
       <Wrap spacing={ '30px' }>
         <WrapItem>

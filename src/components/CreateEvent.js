@@ -54,6 +54,9 @@ function CreateEvent() {
 
     return (
         <div>
+            <div class="top-bar" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70px" }}>
+                <h3>Create an Event</h3>
+            </div>
             Thumbnail:
             <input type="file" name="filename" accept="image/gif, image/jpeg, image/png" />
             <br></br>

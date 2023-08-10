@@ -90,56 +90,51 @@ function MyEvents() {
 
     return (
       <Box>
-      <h3>Campuswave</h3>
-      {/* <button onClick={showNotification}>
-          Click to show notification
-        </button> */}
+      <div class="top-bar" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70px" }}>
+        <h3>My Events</h3>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div style={{ width: '340px' }}>
       <Box maxH="80vh" overflowY="scroll">
-        {data.map((item) => (
-          <Card maxW='md' key={item.Title}>
-            <CardHeader>
-              <Flex spacing='4'>
-                <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                  {/* <Avatar name={item.Title} src={item.image} /> */}
-                  <Box>
-                    <Text>{item.Type}</Text>
-                    <Heading size='sm'>{item.Title}</Heading>
-                    <Text>📍 {item.Location}</Text>
-                    <Text>📅 {formatDateAndTime(item.Time)} </Text>
-                  </Box>
-                </Flex>
-              </Flex>
-            </CardHeader>
-            <CardBody>
-              <Image
-                objectFit='cover'
-                src={item.image}
-                alt='Chakra UI'
-              />
-              <Text>{item.description}</Text>
-            </CardBody>
-            <CardFooter
-              justify='space-between'
-              flexWrap='wrap'
-              sx={{
-                '& > button': {
-                  minW: '136px',
-                },
-              }}
-            >
-              
-            </CardFooter>
-          </Card>
-        ))}
-        </Box>
-        <Flex justify="space-between" align="center" padding="10px">
+          {data.map((item) => (
+            <div>
+              <Card maxW='md' key={item.Title} variant={'outline'}>
+                <CardHeader>
+                  <Flex spacing='4'>
+                    <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
+                      {/* <Avatar name={item.Title} src={item.image} /> */}
+                      <Box>
+                        <Text>{item.Type}</Text>
+                        <Heading size='sm'>{item.Title}</Heading>
+                        <Text>📍 {item.Location}</Text>
+                        <Text>📅 {formatDateAndTime(item.Time)} </Text>
+                      </Box>
+                    </Flex>
+                  </Flex>
+                </CardHeader>
+                <CardBody>
+                  <Image
+                    objectFit='cover'
+                    src={item.image}
+                    alt='Chakra UI'
+                  />
+                  <Text>{item.description}</Text>
+                </CardBody>
+              </Card>
+              <div style={{ height: '20px'}}></div>
+            </div>
+          ))}
+          </Box>
+      </div>
+      </div>
+      
+      <Flex justify="space-between" align="center" padding="10px">
         <button href='/CreateEvent'><img src='add.png' alt='create new event'/></button>
         <button ><img src='chat.png' alt='chat'/></button>
         <button href='/'><img src='home.png' alt='home'/></button>
         <button href='/Profile'><img src='person.png' alt='person'/></button>
         <button><img src='search.png' alt='search'/></button>
-       
-       </Flex>
+      </Flex>
       </Box>
     );
 }
