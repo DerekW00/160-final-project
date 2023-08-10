@@ -13,7 +13,6 @@ import {
 import { auth, database } from '../services/firebase';
 import { ref, get, child } from 'firebase/database';
 
-
 function formatDateAndTime(dateTimeString) {
     const options = { month: 'long', day: 'numeric' };
     const formattedDate = new Date(dateTimeString).toLocaleDateString('en-US', options);
@@ -61,9 +60,40 @@ function MyEvents() {
       }
     }, [user]);
 
+
+    useEffect(() => {
+      const currentTime = new Date();
+      const threshold = 10 * 60 * 1000; // 10 minutes in milliseconds
+  
+      data.forEach((event) => {
+        const eventTime = new Date(event.Time);
+        const timeDifference = eventTime - currentTime;
+  
+        if (timeDifference > 0 && timeDifference <= threshold) {
+          const notification = new Notification(`Reminder: ${event.Title}`, {
+            body: `Your event ${event.Title} is about to start at ${formatDateAndTime(event.Time)}!`,
+          });
+        }
+      });
+    }, [data]);
+  
+    const [permission, setPermission] = useState(Notification.permission);
+  
+    useEffect(() => {
+      if (permission === 'default') {
+        Notification.requestPermission().then((newPermission) => {
+          setPermission(newPermission);
+        });
+      }
+    }, [permission]);
+
+
     return (
       <Box>
       <h3>Campuswave</h3>
+      {/* <button onClick={showNotification}>
+          Click to show notification
+        </button> */}
       <Box maxH="80vh" overflowY="scroll">
         {data.map((item) => (
           <Card maxW='md' key={item.Title}>

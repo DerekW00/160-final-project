@@ -12,10 +12,11 @@ import {
   Text,
   Avatar,
   Image,
+  useToast
 } from '@chakra-ui/react';
 import { database } from '../services/firebase';
 import { ref, get, child } from 'firebase/database';
-import { AddIcon, ChatIcon, Search2Icon, HamburgerIcon } from '@chakra-ui/icons';
+import { cardTheme } from './CardStyle';
 
 function formatDateAndTime(dateTimeString) {
   const options = { month: 'long', day: 'numeric' };
@@ -28,6 +29,8 @@ function formatDateAndTime(dateTimeString) {
 }
 
 function Home() {
+  const toast = useToast();
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -56,16 +59,22 @@ function Home() {
   return (
 
       <Box>
-      <div style={{ paddingTop: "20px", display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+      <div style={{ padding: "20px", display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <img style={{ width: "70%" }}src='campuswave.png' alt='campuswave'/>
       </div>
-      <Box maxH="85vh" overflowY="scroll">
+      <Box maxH="83vh" overflowY="scroll">
         {data.map((item) => (
-          <Card maxW='md' key={item.Title}>
+          <Card maxW='md' variant={'outline'} key={item.Title}>
             <CardHeader>
               <Flex spacing='4'>
                 <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
                   {/* <Avatar name={item.Title} src={item.image} /> */}
+                  <Image
+                    objectFit='cover'
+                    src='thumbnail.png'
+                    // src={item.image}
+                    alt='Chakra UI'
+                  />
                   <Box>
                     <Text>{item.Type}</Text>
                     <Heading size='sm'>{item.Title}</Heading>
@@ -75,25 +84,17 @@ function Home() {
                 </Flex>
               </Flex>
             </CardHeader>
-            <CardBody>
-              <Image
-                objectFit='cover'
-                src={item.image}
-                alt='Chakra UI'
-              />
-              <Text>{item.description}</Text>
-            </CardBody>
-            <CardFooter
-              justify='space-between'
-              flexWrap='wrap'
-              sx={{
-                '& > button': {
-                  minW: '136px',
-                },
-              }}
-            >
-              
-            </CardFooter>
+            <Text>{item.description}</Text>
+            <Button
+            onClick={() =>
+              toast({
+                title: 'Event added.',
+                description: "You'll receive a reminder 10 minutes before the event.",
+                status: 'info',
+                duration: 9000,
+                isClosable: true,
+              })
+            }> Add event </Button>
           </Card>
         ))}
         </Box>
