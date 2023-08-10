@@ -147,7 +147,7 @@ function MyEvents() {
                         <Box>
                             <Badge colorScheme={getColorByType(item.Type)} >{item.Type}</Badge>
                             <div style={{ height: '10px' }}></div>
-                            <Heading size='sm'>{item.Title}</Heading>
+                            <Heading size='md'>{item.Title}</Heading>
                             <Text>📍 {item.Location}
                                     <br />
                                     📅 {formatDateAndTime(item.Time)}
