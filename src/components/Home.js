@@ -141,7 +141,7 @@ function Home() {
           </div>
         ))}
         </Box>
-        <Modal onClose={onClose} isOpen={isOpen} isCentered>
+        <Modal size='xs' onClose={onClose} isOpen={isOpen} isCentered>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>{selectedEvent ? selectedEvent.Title : ''}</ModalHeader>
@@ -154,11 +154,13 @@ function Home() {
                   // src={selectedEvent.image}
                   alt='Chakra UI'
                 />
+                <div style={{ height: '10px' }}></div>
                 <Box>
-                  <Text>{selectedEvent.Type}</Text>
+                  <Badge colorScheme={getColorByType(selectedEvent.Type)} >{selectedEvent.Type}</Badge>
+                  <div style={{ height: '10px' }}></div>
                   <Heading size='sm'>{selectedEvent.Title}</Heading>
-                  <Text>📍 {selectedEvent.Location}</Text>
-                  <Text>📅 {formatDateAndTime(selectedEvent.Time)}</Text>
+                  <Text>📍 {selectedEvent.Location}<br />
+                        📅 {formatDateAndTime(selectedEvent.Time)}</Text>
                 </Box>
                 <Text>{selectedEvent.description}</Text>
               </ModalBody>

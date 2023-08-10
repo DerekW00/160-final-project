@@ -3,6 +3,21 @@ import { PhoneIcon, EmailIcon } from '@chakra-ui/icons';
 import { useState, useEffect } from 'react';
 import { ref, child, push, update } from "firebase/database";
 import { database, auth } from '../services/firebase';
+import { Modal, ModalOverlay, ModalContent, ModalHeader,
+         ModalCloseButton, ModalBody, ModalFooter,
+         useDisclosure, Image, Box, Heading, Text } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+
+function formatDateAndTime(dateTimeString) {
+    const options = { month: 'long', day: 'numeric' };
+    const formattedDate = new Date(dateTimeString).toLocaleDateString('en-US', options);
+  
+    const timeOptions = { hour: 'numeric', minute: 'numeric' };
+    const formattedTime = new Date(dateTimeString).toLocaleTimeString('en-US', timeOptions);
+  
+    return `${formattedDate} @ ${formattedTime}`;
+  }
+
 
 function CreateEvent() {
     const [user, setUser] = useState(null);
@@ -13,6 +28,10 @@ function CreateEvent() {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [dateTime, setDateTime] = useState('');
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [eventCreated, setEventCreated] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -50,11 +69,19 @@ function CreateEvent() {
         updates['/user-events/' + user.uid + '/' + newEventKey] = eventData;
         
         update(ref(database), updates);
+
+        setEventCreated(true);
+        onOpen(); // Open the modal
+    }
+
+    function toHome() {
+        onClose();
+        navigate('/Home');
     }
 
     return (
         <div>
-            <div class="top-bar" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70px" }}>
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70px" }}>
                 <h3>Create an Event</h3>
             </div>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -114,6 +141,31 @@ function CreateEvent() {
                 <div style={{ height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <Button id="CreateNewButton" onClick={create}>Create New Event</Button>
                 </div>
+                <Modal size={'xs'} onClose={onClose} isOpen={isOpen} isCentered>
+                    <ModalOverlay />
+                    <ModalContent>
+                    <ModalHeader>Event Added! </ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <Image
+                        objectFit='cover'
+                        src='thumbnail.png'
+                        // src={selectedEvent.image}
+                        alt='Chakra UI'
+                        />
+                        <Box>
+                        <Text>{type}</Text>
+                        <Heading size='sm'>{title}</Heading>
+                        <Text>📍 {location} <br />
+                              📅 {formatDateAndTime(dateTime)}</Text>
+                        </Box>
+                        <Text>{description}</Text>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={toHome}>Close</Button>
+                    </ModalFooter>
+                    </ModalContent>
+                </Modal>
             </div>
             </div>
             
