@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'; // Make sure to import useState and useEffect
 import { Card, CardHeader, Button, Flex, Box, Heading,
-         Text, Image, useToast } from '@chakra-ui/react';
+         Text, Image } from '@chakra-ui/react';
 import { auth, database } from '../services/firebase';
-import { ref, get, child, push } from 'firebase/database';
+import { ref, get, child } from 'firebase/database';
 
 
 function formatDateAndTime(dateTimeString) {
@@ -15,63 +15,38 @@ function formatDateAndTime(dateTimeString) {
   return `${formattedDate} @ ${formattedTime}`;
 }
 
-function Home() {
-  const toast = useToast();
-  const [user, setUser] = useState(null);
-  const [data, setData] = useState([]);
+function MyFavorites() {
+    const [user, setUser] = useState(null);
+    const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-        setUser(user);
-    });
-
-    return () => unsubscribe();
-}, []);
-
-  useEffect(() => {
-    const dbRef = ref(database);
-    get(child(dbRef, 'events/'))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const snap = snapshot.val();
-          console.log(snap);
-
-          // Convert the object to an array
-          const dataArray = Object.values(snap);
-
-          console.log('dataArray', dataArray);
-
-          setData(dataArray);
-        } else {
-          console.log('No data available');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
-  const addToFavorites = (eventData) => {
-    if (!user) {
-      console.log("You need to sign in first.");
-      return;
-    }
-
-    // Push the event data to the user's favorites path
-    push(child(ref(database), `user-favorites/${user.uid}`), eventData)
-      .then(() => {
-        toast({
-          title: 'Event added to Favorites.',
-          description: "You'll receive a reminder 10 minutes before the event.",
-          status: 'info',
-          duration: 9000,
-          isClosable: true,
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setUser(user);
         });
-      })
-      .catch((error) => {
-        console.error("Error adding event to favorites:", error);
-      });
-  };
+
+        return () => unsubscribe();
+    }, []);
+
+    useEffect(() => {
+        if (!user) {
+        return;
+        }
+
+        const dbRef = ref(database);
+        get(child(dbRef, `user-favorites/${user.uid}`))
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+            const snap = snapshot.val();
+            const dataArray = Object.values(snap);
+            setData(dataArray);
+            } else {
+            console.log('No data available');
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }, [user]);
 
   return (
 
@@ -105,8 +80,6 @@ function Home() {
                 </Flex>
               </CardHeader>
               <Text>{item.description}</Text>
-              <Button
-              onClick={() => addToFavorites(item)}> Add to Favorites </Button>
             </Card>
             <div style={{ height: '20px'}}></div>
           </div>
@@ -127,4 +100,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default MyFavorites;
