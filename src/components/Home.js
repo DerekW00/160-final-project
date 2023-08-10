@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'; // Make sure to import useState and useEffect
 import { Card, CardHeader, Button, Flex, Box, Heading,
-         Text, Image, useToast } from '@chakra-ui/react';
+         Text, Image, useToast, Modal, ModalOverlay, ModalContent,
+         ModalHeader, ModalCloseButton, ModalBody,
+         ModalFooter, useDisclosure, Badge } from '@chakra-ui/react';
 import { auth, database } from '../services/firebase';
 import { ref, get, child, push } from 'firebase/database';
 
@@ -19,6 +21,8 @@ function Home() {
   const toast = useToast();
   const [user, setUser] = useState(null);
   const [data, setData] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -100,7 +104,15 @@ function Home() {
             <Card maxW='md' variant={'outline'} key={item.Title}>
               <CardHeader>
                 <Flex spacing='4'>
-                  <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
+                  <Flex flex='1'
+                    gap='4'
+                    alignItems='center'
+                    flexWrap='wrap'
+                    onClick={() => {
+                      setSelectedEvent(item);
+                      onOpen(); // Open the modal
+                    }}
+                    style={{ cursor: 'pointer' }}>
                     {/* <Avatar name={item.Title} src={item.image} /> */}
                     <Image
                       objectFit='cover'
@@ -109,10 +121,13 @@ function Home() {
                       alt='Chakra UI'
                     />
                     <Box>
-                      <Text>{item.Type}</Text>
+                      <Badge colorScheme={getColorByType(item.Type)} >{item.Type}</Badge>
+                      <div style={{ height: '10px' }}></div>
                       <Heading size='sm'>{item.Title}</Heading>
-                      <Text>📍 {item.Location}</Text>
-                      <Text>📅 {formatDateAndTime(item.Time)} </Text>
+                      <Text>📍 {item.Location}
+                            <br />
+                            📅 {formatDateAndTime(item.Time)}
+                      </Text>
                     </Box>
                   </Flex>
                 </Flex>
@@ -126,6 +141,33 @@ function Home() {
           </div>
         ))}
         </Box>
+        <Modal onClose={onClose} isOpen={isOpen} isCentered>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>{selectedEvent ? selectedEvent.Title : ''}</ModalHeader>
+            <ModalCloseButton />
+            {selectedEvent && (
+              <ModalBody>
+                <Image
+                  objectFit='cover'
+                  src='thumbnail.png'
+                  // src={selectedEvent.image}
+                  alt='Chakra UI'
+                />
+                <Box>
+                  <Text>{selectedEvent.Type}</Text>
+                  <Heading size='sm'>{selectedEvent.Title}</Heading>
+                  <Text>📍 {selectedEvent.Location}</Text>
+                  <Text>📅 {formatDateAndTime(selectedEvent.Time)}</Text>
+                </Box>
+                <Text>{selectedEvent.description}</Text>
+              </ModalBody>
+            )}
+            <ModalFooter>
+              <Button onClick={onClose}>Close</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
         </div>
         </div>
         <div style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
