@@ -5,24 +5,27 @@ import { Button, Text, Center, Heading, Input, Wrap, WrapItem } from '@chakra-ui
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { Link as ChakraLink } from '@chakra-ui/react';
 import { ref, child, get } from 'firebase/database';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function SignUp() {
-  const eid = 11;
-  const dbRef = ref(database);
+  const navigate = useNavigate();
+
+  // const eid = 11;
+  // const dbRef = ref(database);
   // console.log(eventRef);
 
-  get(child(dbRef, `events/eid/${eid}`)).then((snapshot) => {
-    console.log(child(dbRef, `events/eid${eid}`));
-    if (snapshot.exists()) {
-      console.log(snapshot.val());
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
+  // get(child(dbRef, `events/eid/${eid}`)).then((snapshot) => {
+  //   console.log(child(dbRef, `events/eid${eid}`));
+  //   if (snapshot.exists()) {
+  //     console.log(snapshot.val());
+  //   } else {
+  //     console.log("No data available");
+  //   }
+  // }).catch((error) => {
+  //   console.error(error);
+  // });
 
 
   const [name, setName] = useState('');
@@ -58,6 +61,8 @@ function SignUp() {
         })
         .catch((err) => setError(err.message));
     }
+    navigate('/Welcome');
+    
   };
 
   return (
