@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'; // Make sure to import useState and
 import {
   Card,
   CardHeader,
-  CardBody,
-  CardFooter,
+  Badge,
   Flex,
   Box,
   Heading,
@@ -88,6 +87,38 @@ function MyEvents() {
       }
     }, [permission]);
 
+    const groupEventsByMonth = () => {
+      const groupedEvents = {};
+  
+      data.forEach((item) => {
+        const eventDate = new Date(item.Time);
+        const monthYear = eventDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+  
+        if (!groupedEvents[monthYear]) {
+          groupedEvents[monthYear] = [];
+        }
+  
+        groupedEvents[monthYear].push(item);
+      });
+  
+      return groupedEvents;
+    };
+  
+  const groupedEvents = groupEventsByMonth();
+
+  const getColorByType = (eventType) => {
+    switch (eventType) {
+      case 'Networking':
+        return 'blue';
+      case 'Alumni':
+        return 'green';
+      case 'Company Visit':
+        return 'purple';
+      default:
+        return 'gray';
+    }
+  };
+
 
     return (
       <Box>
@@ -96,36 +127,43 @@ function MyEvents() {
       </div>
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
       <div style={{ width: '340px' }}>
-      <Box maxH="80vh" overflowY="scroll">
-          {data.map((item) => (
-            <div>
-              <Card maxW='md' key={item.Title} variant={'outline'}>
-                <CardHeader>
-                  <Flex spacing='4'>
-                    <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                      {/* <Avatar name={item.Title} src={item.image} /> */}
-                      <Box>
-                        <Text>{item.Type}</Text>
-                        <Heading size='sm'>{item.Title}</Heading>
-                        <Text>📍 {item.Location}</Text>
-                        <Text>📅 {formatDateAndTime(item.Time)} </Text>
-                      </Box>
+      <Box maxH="83vh" overflowY="scroll">
+        {Object.keys(groupedEvents).map((monthYear) => (
+          <div key={monthYear}>
+            <Heading as="h2" size="lg" textAlign="center">
+              {monthYear}
+            </Heading>
+            {groupedEvents[monthYear].map((item) => (
+              <div key={item.Title}>
+                <Card maxW="md" variant="outline">
+                  <CardHeader>
+                    <Flex spacing="4">
+                      <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+                        <Image
+                          objectFit="cover"
+                          src="thumbnail.png"
+                          alt="Chakra UI"
+                        />
+                        <Box>
+                            <Badge colorScheme={getColorByType(item.Type)} >{item.Type}</Badge>
+                            <div style={{ height: '10px' }}></div>
+                            <Heading size='sm'>{item.Title}</Heading>
+                            <Text>📍 {item.Location}
+                                    <br />
+                                    📅 {formatDateAndTime(item.Time)}
+                            </Text>
+                        </Box>
+                      </Flex>
                     </Flex>
-                  </Flex>
-                </CardHeader>
-                <CardBody>
-                  <Image
-                    objectFit='cover'
-                    src={item.image}
-                    alt='Chakra UI'
-                  />
+                  </CardHeader>
                   <Text>{item.description}</Text>
-                </CardBody>
-              </Card>
-              <div style={{ height: '20px'}}></div>
-            </div>
-          ))}
-          </Box>
+                </Card>
+                <div style={{ height: '20px' }}></div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </Box>
       </div>
       </div>
       

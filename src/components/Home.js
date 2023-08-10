@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'; // Make sure to import useState and
 import { Card, CardHeader, Button, Flex, Box, Heading,
          Text, Image, useToast, Modal, ModalOverlay, ModalContent,
          ModalHeader, ModalCloseButton, ModalBody,
-         ModalFooter, useDisclosure, Badge } from '@chakra-ui/react';
+         useDisclosure, Badge } from '@chakra-ui/react';
 import { auth, database } from '../services/firebase';
 import { ref, get, child, push } from 'firebase/database';
 
@@ -96,6 +96,25 @@ function Home() {
     }
   };
 
+  const groupEventsByMonth = () => {
+    const groupedEvents = {};
+
+    data.forEach((item) => {
+      const eventDate = new Date(item.Time);
+      const monthYear = eventDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+
+      if (!groupedEvents[monthYear]) {
+        groupedEvents[monthYear] = [];
+      }
+
+      groupedEvents[monthYear].push(item);
+    });
+
+    return groupedEvents;
+  };
+
+  const groupedEvents = groupEventsByMonth();
+
   return (
 
       <Box>
@@ -105,9 +124,14 @@ function Home() {
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
       <div style={{ width: '340px' }}>
       <Box maxH="83vh" overflowY="scroll">
-        {data.map((item) => (
-          <div>
-            <Card maxW='md' variant={'outline'} key={item.Title}>
+      {Object.entries(groupedEvents).map(([monthYear, events]) => (
+        <div key={monthYear}>
+          <Heading size="lg" textAlign="center" marginTop="10px">
+            {monthYear}
+          </Heading>
+          {events.map((item) => (
+            <div key={item.Title}>
+              <Card maxW="md" variant={'outline'}>
               <CardHeader>
                 <Flex spacing='4'>
                   <Flex flex='1'
@@ -139,10 +163,12 @@ function Home() {
                 </Flex>
               </CardHeader>
               
-            </Card>
-            <div style={{ height: '20px'}}></div>
-          </div>
-        ))}
+              </Card>
+              <div style={{ height: '20px' }}></div>
+            </div>
+          ))}
+        </div>
+      ))}
         </Box>
         <Modal size='xs' onClose={onClose} isOpen={isOpen} isCentered>
           <ModalOverlay />
@@ -167,13 +193,27 @@ function Home() {
                 </Box>
                 <Text>{selectedEvent.Description}</Text>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Button
-                  onClick={() => addToFavorites(selectedEvent)}
-                  colorScheme={getColorByType(selectedEvent.Type)}
-                  disabled={addedToFavorites[selectedEvent.Title]} // Disable button if already added
-                >
-                  {addedToFavorites[selectedEvent.Title] ? 'Added to Favorites' : 'Add to Favorites'}
-              </Button>
+                  <Button
+                    onClick={() => addToFavorites(selectedEvent)}
+                    colorScheme={getColorByType(selectedEvent.Type)}
+                    disabled={addedToFavorites[selectedEvent.Title]} // Disable button if already added
+                  >
+                    {addedToFavorites[selectedEvent.Title] ? 'Added to Favorites' : 'Add to Favorites'}
+                  </Button>
+                </div>
+                <div style={{ height: '10px' }}></div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Button
+                    onClick={() =>
+                      toast({
+                        title: 'Event added to Google Calendar.',
+                        status: 'info',
+                        duration: 9000,
+                        isClosable: true,
+                        position: 'top',
+                      })}>
+                    Add to Google Calendar
+                  </Button>
                 </div>
               </ModalBody>
             )}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'; // Make sure to import useState and useEffect
-import { Card, CardHeader, Button, Flex, Box, Heading,
-         Text, Image } from '@chakra-ui/react';
+import { Card, CardHeader, Flex, Box, Heading,
+         Text, Image, Badge } from '@chakra-ui/react';
 import { auth, database } from '../services/firebase';
 import { ref, get, child } from 'firebase/database';
 
@@ -18,6 +18,19 @@ function formatDateAndTime(dateTimeString) {
 function MyFavorites() {
     const [user, setUser] = useState(null);
     const [data, setData] = useState([]);
+
+    const getColorByType = (eventType) => {
+        switch (eventType) {
+          case 'Networking':
+            return 'blue';
+          case 'Alumni':
+            return 'green';
+          case 'Company Visit':
+            return 'purple';
+          default:
+            return 'gray';
+        }
+      };
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -48,6 +61,25 @@ function MyFavorites() {
         });
     }, [user]);
 
+    const groupEventsByMonth = () => {
+        const groupedEvents = {};
+    
+        data.forEach((item) => {
+          const eventDate = new Date(item.Time);
+          const monthYear = eventDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+    
+          if (!groupedEvents[monthYear]) {
+            groupedEvents[monthYear] = [];
+          }
+    
+          groupedEvents[monthYear].push(item);
+        });
+    
+        return groupedEvents;
+      };
+    
+    const groupedEvents = groupEventsByMonth();
+
   return (
 
       <Box>
@@ -57,34 +89,42 @@ function MyFavorites() {
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
       <div style={{ width: '340px' }}>
       <Box maxH="83vh" overflowY="scroll">
-        {data.map((item) => (
-          <div>
-            <Card maxW='md' variant={'outline'} key={item.Title}>
-              <CardHeader>
-                <Flex spacing='4'>
-                  <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                    {/* <Avatar name={item.Title} src={item.image} /> */}
-                    <Image
-                      objectFit='cover'
-                      src='thumbnail.png'
-                      // src={item.image}
-                      alt='Chakra UI'
-                    />
-                    <Box>
-                      <Text>{item.Type}</Text>
-                      <Heading size='sm'>{item.Title}</Heading>
-                      <Text>📍 {item.Location}</Text>
-                      <Text>📅 {formatDateAndTime(item.Time)} </Text>
-                    </Box>
-                  </Flex>
-                </Flex>
-              </CardHeader>
-              <Text>{item.description}</Text>
-            </Card>
-            <div style={{ height: '20px'}}></div>
+        {Object.keys(groupedEvents).map((monthYear) => (
+          <div key={monthYear}>
+            <Heading as="h2" size="lg" textAlign="center">
+              {monthYear}
+            </Heading>
+            {groupedEvents[monthYear].map((item) => (
+              <div key={item.Title}>
+                <Card maxW="md" variant="outline">
+                  <CardHeader>
+                    <Flex spacing="4">
+                      <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+                        <Image
+                          objectFit="cover"
+                          src="thumbnail.png"
+                          alt="Chakra UI"
+                        />
+                        <Box>
+                            <Badge colorScheme={getColorByType(item.Type)} >{item.Type}</Badge>
+                            <div style={{ height: '10px' }}></div>
+                            <Heading size='sm'>{item.Title}</Heading>
+                            <Text>📍 {item.Location}
+                                    <br />
+                                    📅 {formatDateAndTime(item.Time)}
+                            </Text>
+                        </Box>
+                      </Flex>
+                    </Flex>
+                  </CardHeader>
+                  <Text>{item.description}</Text>
+                </Card>
+                <div style={{ height: '20px' }}></div>
+              </div>
+            ))}
           </div>
         ))}
-        </Box>
+      </Box>
         </div>
         </div>
         <div style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>

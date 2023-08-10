@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { auth } from '../services/firebase';
-import { Button, Text, Input } from '@chakra-ui/react';
-import { Link as ReactRouterLink } from 'react-router-dom';
-import { Link as ChakraLink } from '@chakra-ui/react';
+import { Button, Input } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
 function Profile() {

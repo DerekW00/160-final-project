@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'; // Make sure to import useState and useEffect
-import { Card, CardHeader, Button, Flex, Box, Heading,
+import { Card, CardHeader, Flex, Box, Heading,
          Text, Image } from '@chakra-ui/react';
 import { auth, database } from '../services/firebase';
 import { ref, get, child } from 'firebase/database';

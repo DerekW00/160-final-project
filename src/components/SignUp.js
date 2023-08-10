@@ -10,23 +10,6 @@ import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const navigate = useNavigate();
-
-  // const eid = 11;
-  // const dbRef = ref(database);
-  // console.log(eventRef);
-
-  // get(child(dbRef, `events/eid/${eid}`)).then((snapshot) => {
-  //   console.log(child(dbRef, `events/eid${eid}`));
-  //   if (snapshot.exists()) {
-  //     console.log(snapshot.val());
-  //   } else {
-  //     console.log("No data available");
-  //   }
-  // }).catch((error) => {
-  //   console.error(error);
-  // });
-
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -118,8 +101,6 @@ function SignUp() {
         <Button><img src="facebook.png" alt='facebook' /></Button>
       </div>
 
-      
-      
       <div style={{ height: "10px"}}></div>
 
       <div style={{ height: '50px', display: "flex", alignItems: 'center', justifyContent: 'center'}}>
